@@ -1,0 +1,731 @@
+{
+  "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "orderId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "OrderPlaced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "prodId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "stock",
+          "type": "uint256"
+        }
+      ],
+      "name": "PackageStockAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "prodId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "prodName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "jenis",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "prodDetail",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "prodPrize",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "prodSize",
+          "type": "string"
+        }
+      ],
+      "name": "ProductAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "userRole",
+          "type": "uint256"
+        }
+      ],
+      "name": "UserRegistered",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_prodId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_prodName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_jenis",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "_prodDetail",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_prodPrize",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_prodSize",
+          "type": "string"
+        }
+      ],
+      "name": "addProduct",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_prodId",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalsProd",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string[]",
+          "name": "_packageIds",
+          "type": "string[]"
+        }
+      ],
+      "name": "addStock",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllOrders",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "prodId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodName",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prodPrize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "status",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.OutputListOrder[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllPackages",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "packageId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodSize",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodName",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "status",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prodPrize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.OutputListPackage[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllProducts",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "prodId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodName",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prodPrize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.OutputListProduct[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_prodId",
+          "type": "string"
+        }
+      ],
+      "name": "getProductDetail",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "prodId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "prodName",
+              "type": "string"
+            },
+            {
+              "internalType": "uint8",
+              "name": "prodType",
+              "type": "uint8"
+            },
+            {
+              "internalType": "string",
+              "name": "prodDetail",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prodPrize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "prodSize",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct SystemContracts.Product",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "getUserDetail",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "userRole",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.User",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "loginUser",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "userRole",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.User",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "orderDetail",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "orderId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "packageId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "productId",
+          "type": "string"
+        },
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "userRole",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.User",
+          "name": "buyer",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "status",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "orderListByPackage",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "orderId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "packageId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "productId",
+          "type": "string"
+        },
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "userName",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "userRole",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct SystemContracts.User",
+          "name": "buyer",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "status",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "packageDetail",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "packageId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "prodId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "prodName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "stock",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "packageIdByProdId",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "packageIds",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "orderId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "packageId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "productId",
+          "type": "string"
+        }
+      ],
+      "name": "placeOrder",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "productDetail",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "prodId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "prodName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "prodType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "prodDetail",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "prodPrize",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "prodSize",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "productListById",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userList",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "userAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "userRole",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_userName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_userRole",
+          "type": "uint256"
+        }
+      ],
+      "name": "userRegist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

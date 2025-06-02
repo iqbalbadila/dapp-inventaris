@@ -1,35 +1,23 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import hre from "hardhat";
 
 async function main() {
-  const SimpleStorage = await ethers.getContractFactory("SimpleStorage");
-  const simpleStorage = await SimpleStorage.deploy();
-  await simpleStorage.deployed();
+const SystemContract = await ethers.getContractFactory("SystemContracts");
+const systemContract = await SystemContract.deploy();
+await systemContract.waitForDeployment(); // ✅ this replaces .deployed()
+console.log("Deployed to:", await systemContract.getAddress()); // ✅ use getAddress()
 
-  console.log("SimpleStorage deployed to:", simpleStorage.address);
+const address = await systemContract.getAddress();
+
 
   // Simpan ABI dan alamat ke file JSON
   const contractData = {
-    address: simpleStorage.address,
-    abi: JSON.parse(
-      fs.readFileSync(
-        path.resolve(__dirname, "../artifacts/contracts/SimpleStorage.sol/SimpleStorage.json"),
-        "utf8"
-      )
-    ).abi,
+    address: address,
+    abi: (await hre.artifacts.readArtifact("SystemContracts")).abi,
+
   };
 
-  const outputPath = path.resolve(__dirname, "../src/contracts/SimpleStorage.json");
-
-  // Pastikan foldernya ada
-  const outputDir = path.dirname(outputPath);
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-
-  // Tulis file JSON
-  fs.writeFileSync(outputPath, JSON.stringify(contractData, null, 2));
-  console.log("Contract ABI and address saved to:", outputPath);
+  fs.writeFileSync('./src/artifacts/deployment.json', JSON.stringify(contractData, null, 2));
 }
 
 main().catch((error) => {
